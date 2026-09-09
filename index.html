@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#16213e">
+  <title>Devoirs de Leto</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      font-family: Inter, ui-rounded, "SF Pro Rounded", system-ui, -apple-system, sans-serif;
+      --ink: #f8f8ff;
+      --muted: #b8c1d9;
+      --accent: #80e1d1;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 15% 15%, rgba(128, 225, 209, .16), transparent 30%),
+        radial-gradient(circle at 85% 80%, rgba(154, 169, 255, .18), transparent 35%),
+        #10182e;
+    }
+
+    main {
+      width: min(100%, 34rem);
+      padding: max(2rem, env(safe-area-inset-top)) 1.25rem max(2rem, env(safe-area-inset-bottom));
+    }
+
+    h1 {
+      margin: 0 0 .45rem;
+      font-size: clamp(2rem, 9vw, 3.5rem);
+      line-height: 1.05;
+    }
+
+    p {
+      margin: 0 0 2rem;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    a {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 1rem;
+      min-height: 7.5rem;
+      padding: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, .14);
+      border-radius: 1.5rem;
+      color: var(--ink);
+      text-decoration: none;
+      background: linear-gradient(145deg, #31426f, #202d51);
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, .28);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    a + a { margin-top: 1rem; }
+
+    a:active { transform: scale(.98); }
+    a:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+
+    strong {
+      display: block;
+      margin-bottom: .35rem;
+      font-size: 1.35rem;
+    }
+
+    small {
+      color: var(--muted);
+      font-size: .9rem;
+    }
+
+    .arrow {
+      color: var(--accent);
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Devoirs de Leto</h1>
+    <p>Choisis une série de fiches.</p>
+
+    <a href="fiches-allemand.html?sens=de-fr">
+      <span>
+        <strong>Allemand → français</strong>
+        <small>Relations et émotions · 24 fiches</small>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+
+    <a href="fiches-allemand.html?sens=fr-de">
+      <span>
+        <strong>Français → allemand</strong>
+        <small>Relations et émotions · 24 fiches</small>
+      </span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </main>
+</body>
+</html>
