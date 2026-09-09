@@ -72,6 +72,10 @@
       font-size: .95rem;
     }
 
+    .study-area {
+      position: relative;
+    }
+
     .card-shell {
       width: 100%;
       aspect-ratio: 4 / 5;
@@ -139,15 +143,10 @@
 
     .back .language { color: #42605c; }
 
-    nav {
-      display: grid;
-      grid-template-columns: 3.25rem 1fr 3.25rem;
-      align-items: center;
-      gap: .75rem;
-      margin-top: 1rem;
-    }
-
     button {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
       width: 3.25rem;
       height: 3.25rem;
       border: 1px solid rgba(255, 255, 255, .14);
@@ -157,10 +156,14 @@
       font: inherit;
       font-size: 1.4rem;
       cursor: pointer;
+      transform: translateY(-50%);
       -webkit-tap-highlight-color: transparent;
     }
 
-    button:active { transform: scale(.94); }
+    #previous { left: -4.25rem; }
+    #next { right: -4.25rem; }
+
+    button:active { transform: translateY(-50%) scale(.94); }
 
     button:focus-visible,
     .card-shell:focus-visible {
@@ -169,10 +172,21 @@
     }
 
     .hint {
-      margin: 0;
+      margin: 1rem 0 0;
       text-align: center;
       color: var(--muted);
       font-size: .9rem;
+    }
+
+    @media (max-width: 43rem) {
+      #previous { left: .75rem; }
+      #next { right: .75rem; }
+
+      button {
+        background: rgba(16, 24, 46, .72);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -187,31 +201,30 @@
       <span id="counter" aria-live="polite"></span>
     </header>
 
-    <div
-      class="card-shell"
-      id="cardShell"
-      role="button"
-      tabindex="0"
-      aria-label="Retourner la fiche"
-      aria-pressed="false"
-    >
-      <div class="card">
-        <section class="face front" aria-hidden="false">
-          <span class="language" id="frontLanguage"></span>
-          <div class="word" id="frontWord"></div>
-        </section>
-        <section class="face back" aria-hidden="true">
-          <span class="language" id="backLanguage"></span>
-          <div class="word" id="backWord"></div>
-        </section>
-      </div>
-    </div>
-
-    <nav aria-label="Navigation entre les fiches">
+    <div class="study-area">
       <button type="button" id="previous" aria-label="Fiche précédente">←</button>
-      <p class="hint">Touche la carte pour la retourner</p>
+      <div
+        class="card-shell"
+        id="cardShell"
+        role="button"
+        tabindex="0"
+        aria-label="Retourner la fiche"
+        aria-pressed="false"
+      >
+        <div class="card">
+          <section class="face front" aria-hidden="false">
+            <span class="language" id="frontLanguage"></span>
+            <div class="word" id="frontWord"></div>
+          </section>
+          <section class="face back" aria-hidden="true">
+            <span class="language" id="backLanguage"></span>
+            <div class="word" id="backWord"></div>
+          </section>
+        </div>
+      </div>
       <button type="button" id="next" aria-label="Fiche suivante">→</button>
-    </nav>
+    </div>
+    <p class="hint">Touche la carte pour la retourner</p>
   </main>
 
   <script>
